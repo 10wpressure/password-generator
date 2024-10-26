@@ -1,10 +1,30 @@
 [package]
-name = "pass-gen"
-version = "0.1.0"
+name = "password-generator"
+version = "1.0.0"
 edition = "2021"
+authors = ["Boris K. <l0wpressu7e@gmail.com>"]
+description = "A secure and customizable password generator"
+readme = "README.md"
+license = "MIT"
+categories = ["command-line-utilities", "cryptography"]
+keywords = ["password", "generator", "security", "cli"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-clap = { version = "4.0.18", features = ["derive"] }
-rand = "0.8.5"
+clap = { version = "4.5.20", features = ["derive"] }
+rand = "0.9.0-alpha.2"
+
+[dev-dependencies]
+criterion = "0.5.1"
+test-case = "3.3.1"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = 'abort'
+strip = true
+
+[package.metadata]
+msrv = "1.70.0"
